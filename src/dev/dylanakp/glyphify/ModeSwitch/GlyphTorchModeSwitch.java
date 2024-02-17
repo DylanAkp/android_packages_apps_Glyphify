@@ -15,38 +15,21 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 *
 */
-package org.neoteric.device.DeviceExtras;
+package dev.dylanakp.glyphify;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 
-import org.neoteric.device.DeviceExtras.FileUtils;
+import dev.dylanakp.glyphify.FileUtils;
 
-public class PowerShareModeSwitch implements OnPreferenceChangeListener {
-
-    private static final String FILE = "/sys/class/qcom-battery/wireless_boost_en";
-
-    public static String getFile() {
-        if (FileUtils.fileWritable(FILE)) {
-                return FILE;
-        }
-        return null;
-    }
-
-    public static boolean isSupported() {
-        return FileUtils.fileWritable(getFile());
-    }
-
-    public static boolean isCurrentlyEnabled(Context context) {
-        return FileUtils.getFileValueAsBoolean(getFile(), false);
-    }
+public class GlyphTorchModeSwitch implements OnPreferenceChangeListener {
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        Boolean enabled = (Boolean) newValue;
-        FileUtils.writeValue(getFile(), enabled ? "1" : "0");
+        GlyphUtils.setOperating(1);
+        GlyphUtils.switchGlyphTorch();
         return true;
     }
 }

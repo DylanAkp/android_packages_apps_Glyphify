@@ -16,7 +16,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 *
 */
-package org.neoteric.device.DeviceExtras;
+package dev.dylanakp.glyphify;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -34,9 +34,9 @@ public class Startup extends BroadcastReceiver {
     public void onReceive(final Context context, final Intent bootintent) { 
         boolean enabled = false;
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        enabled = sharedPrefs.getBoolean(DeviceExtras.KEY_POWERSHARE_SWITCH, false);
+        enabled = sharedPrefs.getBoolean(DeviceExtras.KEY_GLYPHTORCH_SWITCH, false);
         if (enabled) {
-        restore(PowerShareModeSwitch.getFile(), enabled);
+            restore(GlyphUtils.getAllWhiteBrightness(), enabled);
         }
     }
 

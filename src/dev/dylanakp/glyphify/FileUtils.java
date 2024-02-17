@@ -15,7 +15,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
  
-package org.neoteric.device.DeviceExtras;
+package dev.dylanakp.glyphify;
 
 import android.content.Context;
 import android.content.Intent;

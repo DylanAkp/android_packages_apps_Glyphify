@@ -16,12 +16,11 @@
     limitations under the License.
 -->
 <resources>
-    <!-- Device Extras -->
-    <string name="device_title">Device Extras</string>
-    <string name="device_summary">Adjust device specific settings</string>
-
-    <!-- Power -->
-    <string name="power_title">Power</string>
-    <string name="powershare_mode_title">Wireless powershare</string>
-    <string name="powershare_mode_summary">Enable reverse wireless charging</string>
+    <string name="device_title">Glyphify</string>
+    <string name="device_summary">Adjust glyph settings</string>
+    <string name="glyph_title">Glyph</string>
+    <string name="glyphtorch_mode_title">Glyph Torch</string>
+    <string name="glyphtorch_mode_summary">Enable Glyph Torch</string>
+    <string name="glyph_strength_title">Glyph Brightness</string>
+    <string name="glyph_strength_summary">Adjust Glyph Brightness</string>
 </resources>

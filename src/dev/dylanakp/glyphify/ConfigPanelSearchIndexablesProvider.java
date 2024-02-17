@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.neoteric.device.DeviceExtras;
+package dev.dylanakp.glyphify;
 
 
 import android.database.Cursor;
@@ -44,7 +44,7 @@ public class ConfigPanelSearchIndexablesProvider extends SearchIndexablesProvide
     private static SearchIndexableResource[] INDEXABLE_RES = new SearchIndexableResource[]{
             new SearchIndexableResource(1, R.xml.main,
                     DeviceExtrasActivity.class.getName(),
-                    R.drawable.ic_settings_device),
+                    R.drawable.ic_glyphify),
     };
 
     @Override
@@ -65,7 +65,7 @@ public class ConfigPanelSearchIndexablesProvider extends SearchIndexablesProvide
         ref[COLUMN_INDEX_XML_RES_CLASS_NAME] = null;
         ref[COLUMN_INDEX_XML_RES_ICON_RESID] = sir.iconResId;
         ref[COLUMN_INDEX_XML_RES_INTENT_ACTION] = "com.android.settings.action.EXTRA_SETTINGS";
-        ref[COLUMN_INDEX_XML_RES_INTENT_TARGET_PACKAGE] = "org.neoteric.device.DeviceExtras";
+        ref[COLUMN_INDEX_XML_RES_INTENT_TARGET_PACKAGE] = "dev.dylanakp.glyphify";
         ref[COLUMN_INDEX_XML_RES_INTENT_TARGET_CLASS] = sir.className;
         return ref;
     }

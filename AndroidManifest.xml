@@ -18,10 +18,10 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="org.neoteric.device.DeviceExtras"
+    package="dev.dylanakp.glyphify"
     android:sharedUserId="android.uid.system"
-    android:versionCode="5"
-    android:versionName="5.0">
+    android:versionCode="6"
+    android:versionName="5.1">
 
     <uses-permission android:name="android.permission.INJECT_EVENTS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -45,7 +45,7 @@
             tools:replace="android:authorities"/>
 
         <receiver
-            android:name="org.neoteric.device.DeviceExtras.Startup"
+            android:name="dev.dylanakp.glyphify.Startup"
             android:defaultToDeviceProtectedStorage="true"
             android:directBootAware="true"
             android:enabled="true"
@@ -57,11 +57,11 @@
         </receiver>
 
         <activity 
-            android:name="org.neoteric.device.DeviceExtras" />
+            android:name="dev.dylanakp.glyphify" />
 
         <!-- DeviceExtras -->
         <activity
-            android:name="org.neoteric.device.DeviceExtras.DeviceExtrasActivity"
+            android:name="dev.dylanakp.glyphify.DeviceExtrasActivity"
             android:label="@string/device_title">
             <intent-filter>
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
@@ -69,10 +69,13 @@
 
             <meta-data
                 android:name="com.android.settings.icon"
-                android:resource="@drawable/ic_settings_device" />
+                android:resource="@drawable/ic_glyphify" />
             <meta-data
                 android:name="com.android.settings.category"
-                android:value="com.android.settings.category.ia.system" />
+                android:value="com.android.settings.category.ia.homepage" />
+            <meta-data
+                android:name="com.android.settings.order"
+                android:value="-115" />
             <meta-data
                 android:name="com.android.settings.summary"
                 android:resource="@string/device_summary" />
@@ -80,8 +83,8 @@
 
         <!-- DeviceExtras tile -->
         <service
-            android:name="org.neoteric.device.DeviceExtras.DeviceExtrasTileService"
-            android:icon="@drawable/ic_settings_device"
+            android:name="dev.dylanakp.glyphify.DeviceExtrasTileService"
+            android:icon="@drawable/ic_glyphify"
             android:label="@string/device_title"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
@@ -89,11 +92,11 @@
             </intent-filter>
         </service>
 
-        <!-- PowerShare tile -->
+        <!-- GlyphTorch tile -->
         <service
-            android:name="org.neoteric.device.DeviceExtras.PowerShareTileService"
-            android:icon="@drawable/ic_powershare"
-            android:label="@string/powershare_mode_title"
+            android:name="dev.dylanakp.glyphify.GlyphTorchTileService"
+            android:icon="@drawable/ic_glyph"
+            android:label="@string/glyphtorch_mode_title"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
@@ -102,8 +105,8 @@
 
         <!-- Search Indexing -->
         <provider
-            android:name="org.neoteric.device.DeviceExtras.ConfigPanelSearchIndexablesProvider"
-            android:authorities="org.neoteric.device"
+            android:name="dev.dylanakp.glyphify.ConfigPanelSearchIndexablesProvider"
+            android:authorities="org.lineageos.device"
             android:exported="true"
             android:grantUriPermissions="true"
             android:multiprocess="false"

@@ -15,7 +15,7 @@
 //
 
 android_app {
-    name: "Pong_DeviceExtras",
+    name: "Glyphify",
 
     defaults: [
         "SettingsLibDefaults",
@@ -34,7 +34,7 @@ android_app {
         "VendorSupport-Libs",
     ],
     required: [
-        "privapp_whitelist_DeviceExtras",
+        "privapp_whitelist_Glyphify",
     ],
     resource_dirs: ["res"],
     optimize: {
@@ -43,9 +43,9 @@ android_app {
 }
 
 prebuilt_etc {
-    name: "privapp_whitelist_DeviceExtras",
+    name: "privapp_whitelist_Glyphify",
     sub_dir: "permissions",
-    src: "privapp-permissions-DeviceExtras.xml",
+    src: "privapp-permissions-Glyphify.xml",
     filename_from_src: true,
     system_ext_specific: true,
 }

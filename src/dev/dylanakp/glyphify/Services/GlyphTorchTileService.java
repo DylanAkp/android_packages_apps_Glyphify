@@ -1,21 +1,4 @@
-/*
-* Copyright (C) 2018 The OmniROM Project
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 2 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program. If not, see <http://www.gnu.org/licenses/>.
-*
-*/
-package org.neoteric.device.DeviceExtras;
+package dev.dylanakp.glyphify;
 
 import android.annotation.TargetApi;
 import android.content.SharedPreferences;
@@ -23,10 +6,9 @@ import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import androidx.preference.PreferenceManager;
 
-import org.neoteric.device.DeviceExtras.DeviceExtras;
+import dev.dylanakp.glyphify.DeviceExtras;
 
-@TargetApi(24)
-public class PowerShareTileService extends TileService {
+public class GlyphTorchTileService extends TileService {
     private boolean enabled = false;
 
     @Override
@@ -48,7 +30,7 @@ public class PowerShareTileService extends TileService {
     public void onStartListening() {
         super.onStartListening();
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        enabled = PowerShareModeSwitch.isCurrentlyEnabled(this);
+        enabled = GlyphUtils.isGlyphTorchEnabled();
         getQsTile().setState(enabled ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
         getQsTile().updateTile();
 
@@ -63,9 +45,10 @@ public class PowerShareTileService extends TileService {
     public void onClick() {
         super.onClick();
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        enabled = PowerShareModeSwitch.isCurrentlyEnabled(this);
-        FileUtils.writeValue(PowerShareModeSwitch.getFile(), enabled ? "0" : "1");
-        sharedPrefs.edit().putBoolean(DeviceExtras.KEY_POWERSHARE_SWITCH, enabled ? false : true).commit();
+        enabled = GlyphUtils.isGlyphTorchEnabled();
+        GlyphUtils.setOperating(1);
+        GlyphUtils.switchGlyphTorch();
+        sharedPrefs.edit().putBoolean(DeviceExtras.KEY_GLYPHTORCH_SWITCH, enabled ? false : true).commit();
         getQsTile().setState(enabled ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE);
         getQsTile().updateTile();
     }

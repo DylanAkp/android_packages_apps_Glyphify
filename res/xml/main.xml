@@ -16,18 +16,24 @@
      limitations under the License.
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:settings="http://schemas.android.com/apk/res/org.neoteric.device.DeviceExtras"
+	xmlns:settings="http://schemas.android.com/apk/res/dev.dylanakp.glyphify"
 	android.title="@string/device_title">
 
     <PreferenceCategory
-        android:key="power"
-        android:title="@string/power_title">
-        
+        android:key="glyph"
+        android:title="@string/glyph_title">
+    <dev.dylanakp.glyphify.GlyphStrengthPreference
+            android:key="glyphstrength"
+            android:icon="@drawable/ic_brightness"
+            android:title="@string/glyph_strength_title"
+            android:summary="@string/glyph_strength_summary" />
     <org.lineageos.support.preference.SwitchPreference
-            android:key="powershare"
-            android:icon="@drawable/ic_powershare"
-            android:title="@string/powershare_mode_title"
-            android:summary="@string/powershare_mode_summary" />
+            android:key="glyphtorch"
+            android:icon="@drawable/ic_glyph"
+            android:title="@string/glyphtorch_mode_title"
+            android:summary="@string/glyphtorch_mode_summary" />
+
+    
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -17,7 +17,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 *
 */
-package org.neoteric.device.DeviceExtras;
+package dev.dylanakp.glyphify;
 
 import android.app.ActivityManager;
 import android.app.AlertDialog;
@@ -51,8 +51,8 @@ import androidx.preference.TwoStatePreference;
 
 import java.util.Arrays;
 
-import org.neoteric.device.DeviceExtras.FileUtils;
-import org.neoteric.device.DeviceExtras.R;
+import dev.dylanakp.glyphify.FileUtils;
+import dev.dylanakp.glyphify.R;
 
 import org.lineageos.support.preference.CustomSeekBarPreference;
 
@@ -61,21 +61,29 @@ public class DeviceExtras extends PreferenceFragment {
 
     public static final String KEY_SETTINGS_PREFIX = "device_setting_";
 
-    public static final String KEY_POWERSHARE_SWITCH = "powershare";
+    public static final String KEY_GLYPHTORCH_SWITCH = "glyphtorch";
 
-    private static TwoStatePreference mPowerShareModeSwitch;
+    public static final String KEY_GLYPHSTRENGTH_SWITCH = "glyphstrength";
+
+    private static TwoStatePreference mGlyphTorchModeSwitch;
+
+    private static CustomSeekBarPreference mGlyphStrengthPreference;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
         addPreferencesFromResource(R.xml.main);
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
-        
-        // PowerShare
-        mPowerShareModeSwitch = (TwoStatePreference) findPreference(KEY_POWERSHARE_SWITCH);
-        if (PowerShareModeSwitch.isSupported()) {
-            mPowerShareModeSwitch.setChecked(PowerShareModeSwitch.isCurrentlyEnabled(this.getContext()));
-            mPowerShareModeSwitch.setOnPreferenceChangeListener(new PowerShareModeSwitch());
+
+        // Glyph Torch
+        mGlyphTorchModeSwitch = (TwoStatePreference) findPreference(KEY_GLYPHTORCH_SWITCH);
+        mGlyphTorchModeSwitch.setChecked(GlyphUtils.isGlyphTorchEnabled());
+        mGlyphTorchModeSwitch.setOnPreferenceChangeListener(new GlyphTorchModeSwitch());
+
+        // Glyph Strength
+        mGlyphStrengthPreference = (GlyphStrengthPreference) findPreference(KEY_GLYPHSTRENGTH_SWITCH);
+        if (mGlyphStrengthPreference != null) {
+            mGlyphStrengthPreference.setEnabled(GlyphStrengthPreference.isSupported());
         }
     }
 
